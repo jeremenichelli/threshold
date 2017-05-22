@@ -1,6 +1,6 @@
 {
   "name": "threshold",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Library to get useful metrics about an element's position in the viewport",
   "main": "dist/threshold.js",
   "scripts": {
