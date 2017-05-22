@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>threshold | demo</title>
+
+  <style>
+    html, body {
+      background-color: #d0d0d0;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 350vh;
+    }
+
+    .test-element {
+      background-color: rebeccapurple;
+      position: relative;
+      height: 80vh;
+      margin: 0 auto;
+      top: 125vh;
+      width: 80vw;
+    }
+
+    .metrics-panel {
+      background-color: #202020;
+      color: #fefefe;
+      padding: 0.5em 1.25em;
+      opacity: .85;
+      position: fixed;
+      top: 1em;
+      left: 1em;
+      width: 11em;
+      z-index: 1;
+    }
+
+    .metrics-panel span {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="metrics-panel">
+    <p>threshold: <span id="threshold-indicator">0</span>%</p>
+    <p>trajectory: <span id="trajectory-indicator">0</span>%</p>
+  </div>
+  <!-- TEST ELEMENT -->
+  <div class="test-element"></div>
+  <!-- SRC SCRIPT -->
+  <script src="../dist/threshold.js"></script>
+  <!-- TEST SCRIPTS -->
+  <script>
+    var THROTTLE_INTERVAL = 100;
+    console.log(threshold)
+    function throttle(fn) {
+      var timer = null;
+
+      return function throttledAction() {
+        if (timer) {
+          return;
+        }
+        timer = setTimeout(function () {
+          fn.apply(this, arguments);
+          timer = null;
+        }, THROTTLE_INTERVAL);
+      };
+    };
+
+    window.addEventListener('load', function() {
+      // gather metric indicators
+      var thresholdIndicator = document.getElementById('threshold-indicator');
+      var trajectoryIndicator = document.getElementById('trajectory-indicator');
+
+      // gather test element
+      var testElement = document.querySelector('.test-element');
+
+      function gatherMetrics() {
+        var metrics = threshold(testElement);
+
+        // update indicators
+        thresholdIndicator.textContent = (metrics.threshold * 100).toFixed(2);
+        trajectoryIndicator.textContent = (metrics.trajectory * 100).toFixed(2);
+      }
+
+      gatherMetrics();
+
+      // add scroll lsitener only on load
+      window.addEventListener('scroll', throttle(gatherMetrics));
+    });
+  </script>
+</body>
+</html>

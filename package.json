@@ -1,0 +1,34 @@
+{
+  "name": "threshold",
+  "version": "0.0.0",
+  "description": "Library to get useful metrics about an element's position in the viewport",
+  "main": "dist/threshold.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremenichelli/threshold.git"
+  },
+  "keywords": [
+    "threshold",
+    "viewport",
+    "element",
+    "scroll",
+    "metric",
+    "parallax"
+  ],
+  "author": {
+    "name": "Jeremias Menichelli",
+    "email": "jmenichelli@gmail.com",
+    "url": "jeremenichelli.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeremenichelli/threshold/issues"
+  },
+  "homepage": "https://github.com/jeremenichelli/threshold#readme",
+  "devDependencies": {
+    "rollup": "^0.41.6"
+  }
+}
