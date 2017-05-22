@@ -40,18 +40,22 @@
   </style>
 </head>
 <body>
+  <!-- METRICS -->
   <div class="metrics-panel">
     <p>threshold: <span id="threshold-indicator">0</span>%</p>
     <p>trajectory: <span id="trajectory-indicator">0</span>%</p>
   </div>
+
   <!-- TEST ELEMENT -->
   <div class="test-element"></div>
+
   <!-- SRC SCRIPT -->
   <script src="../dist/threshold.js"></script>
+
   <!-- TEST SCRIPTS -->
   <script>
     var THROTTLE_INTERVAL = 100;
-    console.log(threshold)
+
     function throttle(fn) {
       var timer = null;
 
@@ -87,6 +91,11 @@
       // add scroll lsitener only on load
       window.addEventListener('scroll', throttle(gatherMetrics));
     });
+  </script>
+
+  <!-- STATS -->
+  <script>
+    (function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();stats.dom.style='right:1em;top:1em;position:fixed';document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='http://rawgit.com/mrdoob/stats.js/master/build/stats.min.js';document.head.appendChild(script);})()
   </script>
 </body>
 </html>

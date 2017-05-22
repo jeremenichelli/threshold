@@ -4,6 +4,10 @@
 	(global.threshold = factory());
 }(this, (function () { 'use strict';
 
+var viewport = {
+  height: window.innerHeight
+};
+
 /**
  * Returns metrics regarding an element's position in the viewport
  * @method threshold
@@ -12,11 +16,10 @@
  */
 function threshold(element) {
   var rects = element.getBoundingClientRect();
-  var viewportHeight = window.innerHeight;
 
-  var upperThreshold = ((viewportHeight - rects.top) / rects.height);
+  var upperThreshold = ((viewport.height - rects.top) / rects.height);
   var bottomThreshold = rects.bottom / rects.height;
-  var trajectoryLength = rects.height + viewportHeight;
+  var trajectoryLength = rects.height + viewport.height;
 
   /**
    * threshold
