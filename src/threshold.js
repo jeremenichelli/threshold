@@ -1,6 +1,6 @@
 var viewport = {
   height: window.innerHeight
-}
+};
 
 /**
  * Updates memoized viewport metrics
@@ -9,6 +9,9 @@ var viewport = {
 function updateViewport() {
   viewport.height = window.innerHeight;
 }
+
+// update viewport metrics when window is resized
+window.addEventListener('scroll', updateViewport);
 
 /**
  * Returns metrics regarding an element's position in the viewport
@@ -49,7 +52,7 @@ function threshold(element) {
   return {
     threshold: threshold,
     trajectory: trajectory
-  }
+  };
 }
 
 export default threshold;

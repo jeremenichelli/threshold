@@ -4,6 +4,8 @@
   "description": "Library to get useful metrics about an element's position in the viewport",
   "main": "dist/threshold.js",
   "scripts": {
+    "test": "eslint src/threshold.js",
+    "prebuild": "npm test",
     "build": "rollup -c rollup.config.js"
   },
   "repository": {
@@ -29,6 +31,8 @@
   },
   "homepage": "https://github.com/jeremenichelli/threshold#readme",
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
     "rollup": "^0.41.6"
   }
 }

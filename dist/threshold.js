@@ -9,6 +9,17 @@ var viewport = {
 };
 
 /**
+ * Updates memoized viewport metrics
+ * @method updateViewport
+ */
+function updateViewport() {
+  viewport.height = window.innerHeight;
+}
+
+// update viewport metrics when window is resized
+window.addEventListener('scroll', updateViewport);
+
+/**
  * Returns metrics regarding an element's position in the viewport
  * @method threshold
  * @param {Node} element
@@ -47,7 +58,7 @@ function threshold(element) {
   return {
     threshold: threshold,
     trajectory: trajectory
-  }
+  };
 }
 
 return threshold;
