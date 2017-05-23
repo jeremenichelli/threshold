@@ -32,14 +32,14 @@ threshold(element);
 
 The first number represents the portion of visible area of the element.
 
-This indicator goes from `0` when the element is completely out of sight, to `1` in case is possible for the element to be all visible at some point while the user scrolls.
+This indicator goes from `0` when the element is completely out of sight, to `1` in case is possible for the element to be all visible at some scrolling point.
 
 
 ### trajectory
 
 The second indicates the fraction of the distance between the point in the viewport where the element becomes visible from the point where it vanishes on top. Different from `threshold`, this number can be less than `0` or higher than `1` since it might be necessary for some specific actions.
 
-You can check these numbers working in this [demo](https://jeremenichelli.github.io/threshold/demo/).
+You can check both working in this [demo](https://jeremenichelli.github.io/threshold/demo/).
 
 
 ### Gather metrics on scroll
@@ -57,7 +57,7 @@ window.addEventListener('scroll', () => {
 });
 ```
 
-Though the library tries to figure out this numbers as fast as possible, be sure to measure performance in your project to make sure frames are not dropped. I recommend throttling the event as in the demo.
+Though the library tries to figure out these numbers as fast as possible, be sure to measure performance in your project to make sure frames are not dropped. I recommend throttling the event as in the demo.
 
 
 ## License
