@@ -1,0 +1,8 @@
+node_modules
+.gitignore
+.travis.yml
+.babelrc
+.eslintrc.json
+src
+test
+demo
