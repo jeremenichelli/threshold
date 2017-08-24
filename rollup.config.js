@@ -1,6 +1,15 @@
+const pkg = require('./package.json');
+const year = (new Date()).getFullYear();
+
 export default {
-  moduleName: 'threshold',
   entry: 'src/threshold.js',
+  dest: 'dist/threshold.js',
   format: 'umd',
-  dest: 'dist/threshold.js'
+  globals: [
+    'window'
+  ],
+  indent: true,
+  useStrict: true,
+  moduleName: 'threshold',
+  banner: `/* ${ pkg.name } v${ pkg.version } - ${ year } Jeremias Menichelli - MIT License */`
 };

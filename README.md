@@ -24,11 +24,11 @@ import threshold from 'threshold';
 const element = document.querySelector('.test');
 
 threshold(element);
-// { threshold, trajectory }
+// { area, trajectory: { x, y } }
 ```
 
 
-### threshold
+### area
 
 The first number represents the portion of visible area of the element.
 
@@ -37,7 +37,9 @@ This indicator goes from `0` when the element is completely out of sight, to `1`
 
 ### trajectory
 
-The second indicates the fraction of the distance between the point in the viewport where the element becomes visible from the point where it vanishes on top. Different from `threshold`, this number can be less than `0` or higher than `1` since it might be necessary for some specific actions.
+The second indicates the fraction of the distance between the point in the viewport where the element becomes visible from the point where it vanishes on top or left. Different from `area`, these numbers can be less than `0` or higher than `1` since it might be necessary for some specific actions.
+
+An element can have a horizontal an vertical trajectory, so this second property is an object with `x` and `y` values.
 
 You can check both working in this [demo](https://jeremenichelli.github.io/threshold/demo/).
 

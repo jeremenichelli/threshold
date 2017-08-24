@@ -11,6 +11,10 @@
       margin: 0;
       padding: 0;
       height: 350vh;
+      width: 350vw;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .test-element {
@@ -19,19 +23,24 @@
       height: 80vh;
       margin: 0 auto;
       top: 125vh;
+      left: 80vw;
       width: 80vw;
     }
 
     .metrics-panel {
-      background-color: #202020;
+      background-color: rgba(0, 0, 0, .75);
       color: #fefefe;
+      font-size: 14px;
       padding: 0.5em 1.25em;
-      opacity: .85;
       position: fixed;
       top: 1em;
       left: 1em;
-      width: 11em;
+      width: 10em;
       z-index: 1;
+    }
+
+    code {
+      font-family: Menlo, Consolas, Monaco, monospace;
     }
 
     .metrics-panel span {
@@ -42,8 +51,13 @@
 <body>
   <!-- METRICS -->
   <div class="metrics-panel">
-    <p>threshold: <span id="threshold-indicator">0</span>%</p>
-    <p>trajectory: <span id="trajectory-indicator">0</span>%</p>
+<pre><code>{
+  area: <span id="area-indicator">0</span>,
+  trajectory: {
+    x: <span id="x-trajectory-indicator">0</span>,
+    y: <span id="y-trajectory-indicator">0</span>
+  }
+}</code></pre>
   </div>
 
   <!-- TEST ELEMENT -->
@@ -72,8 +86,9 @@
 
     window.addEventListener('load', function() {
       // gather metric indicators
-      var thresholdIndicator = document.getElementById('threshold-indicator');
-      var trajectoryIndicator = document.getElementById('trajectory-indicator');
+      var areaIndicator = document.getElementById('area-indicator');
+      var xTrajectoryIndicator = document.getElementById('x-trajectory-indicator');
+      var yTrajectoryIndicator = document.getElementById('y-trajectory-indicator');
 
       // gather test element
       var testElement = document.querySelector('.test-element');
@@ -82,8 +97,9 @@
         var metrics = threshold(testElement);
 
         // update indicators
-        thresholdIndicator.textContent = (metrics.threshold * 100).toFixed(2);
-        trajectoryIndicator.textContent = (metrics.trajectory * 100).toFixed(2);
+        areaIndicator.textContent = metrics.area.toFixed(3);
+        xTrajectoryIndicator.textContent = metrics.trajectory.x.toFixed(3);
+        yTrajectoryIndicator.textContent = metrics.trajectory.y.toFixed(3);
       }
 
       gatherMetrics();
@@ -95,7 +111,24 @@
 
   <!-- STATS -->
   <script>
-    (function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();stats.dom.style='right:1em;top:1em;position:fixed';document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='https://rawgit.com/mrdoob/stats.js/master/build/stats.min.js';document.head.appendChild(script);})()
+    (function() {
+      var script = document.createElement('script');
+      script.async = true;
+
+      script.onload = function() {
+        var stats = new Stats();
+
+        stats.dom.style = 'right:1em;top:1em;position:fixed';
+        document.body.appendChild(stats.dom);
+
+        requestAnimationFrame(function loop(){
+          stats.update();
+          requestAnimationFrame(loop);
+        });
+      };
+      script.src='https://rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
+      document.head.appendChild(script);
+    })();
   </script>
 </body>
 </html>
