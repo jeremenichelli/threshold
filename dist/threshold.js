@@ -1,4 +1,4 @@
-/* threshold v0.2.0 - 2017 Jeremias Menichelli - MIT License */
+/* threshold v0.3.0 - 2017 Jeremias Menichelli - MIT License */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
